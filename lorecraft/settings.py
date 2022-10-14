@@ -89,11 +89,20 @@ WSGI_APPLICATION = "lorecraft.wsgi.application"
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
-
-DATABASES = {
-    "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))  # type: ignore
-}
-
+if IS_PROD:
+    DATABASES = {
+        "default": dj_database_url.parse(os.getenv("DATABASE_URL"))  # type: ignore
+    }
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "HOST": os.getenv("DB_HOST"),
+            "NAME": os.getenv("DB_NAME"),
+            "USER": os.getenv("DB_USER"),
+            "PASSWORD": os.getenv("DB_PASS"),
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
