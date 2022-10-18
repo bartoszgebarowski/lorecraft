@@ -30,7 +30,7 @@ IS_PROD = os.getenv("ENV", "development").lower() == "production"
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = IS_PROD == False
+DEBUG = IS_PROD is False
 
 ALLOWED_HOSTS = ["pp4-lorecraft.herokuapp.com", "localhost", "127.0.0.1"]
 
@@ -43,11 +43,21 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    "django.contrib.sites",
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
     "cloudinary_storage",
     "django.contrib.staticfiles",
     "cloudinary",
     "static_pages",
+    "accounts",
 ]
+
+SITE_ID = 1
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"
+ACCOUNT_EMAIL_VERIFICATION = "none"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -80,9 +90,7 @@ TEMPLATES = [
 WSGI_APPLICATION = "lorecraft.wsgi.application"
 
 if IS_PROD:
-    DATABASES = {
-        "default": dj_database_url.parse(os.getenv("DATABASE_URL"))  # type: ignore
-    }
+    DATABASES = {"default": dj_database_url.parse(os.environ["DATABASE_URL"])}
 else:
     DATABASES = {
         "default": {
@@ -99,16 +107,16 @@ else:
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",  # noqa: E501
     },
     {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",  # noqa: E501
     },
     {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",  # noqa: E501
     },
     {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",  # noqa: E501
     },
 ]
 
@@ -144,3 +152,5 @@ DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+AUTH_USER_MODEL = "accounts.MyUser"
