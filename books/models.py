@@ -49,6 +49,16 @@ class Book(models.Model):
     def __str__(self) -> str:
         return f"{self.title}"
 
+    def get_genre(self):
+        return list(self.genre.all())
+
+    get_genre.short_description = "Genre"
+
+    def get_authors(self):
+        return list(self.author.all())
+
+    get_authors.short_description = "Authors"
+
 
 class ExamplePage(models.Model):
     example_page = CloudinaryField("image", default="placeholder")
