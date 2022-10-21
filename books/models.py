@@ -12,6 +12,9 @@ class Author(models.Model):
         auto_now=True, null=True, editable=False, verbose_name="Updated at"
     )
 
+    def __str__(self) -> str:
+        return f"{self.first_name} {self.last_name}"
+
 
 class Genre(models.Model):
     genre = models.CharField(max_length=50)
@@ -22,14 +25,15 @@ class Genre(models.Model):
         auto_now=True, null=True, editable=False, verbose_name="Updated at"
     )
 
+    def __str__(self) -> str:
+        return f"{self.genre}"
+
 
 class Book(models.Model):
     title = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(max_length=100, unique=True)
     author = models.ManyToManyField(Author)
-    genre = models.ForeignKey(
-        Genre, on_delete=models.CASCADE, related_name="books"
-    )
+    genre = models.ManyToManyField(Genre)
     is_featured = models.BooleanField(default=False)
     is_visible = models.BooleanField(default=False)
     year_of_published = models.IntegerField()
@@ -42,8 +46,11 @@ class Book(models.Model):
         auto_now=True, null=True, editable=False, verbose_name="Updated at"
     )
 
+    def __str__(self) -> str:
+        return f"{self.title}"
 
-class ExamplePages(models.Model):
+
+class ExamplePage(models.Model):
     example_page = CloudinaryField("image", default="placeholder")
     books = models.ForeignKey(
         Book, on_delete=models.CASCADE, related_name="example_pages"
