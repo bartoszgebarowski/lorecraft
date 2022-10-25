@@ -49,8 +49,8 @@ class Book(models.Model):
     @property
     def is_img_default(self):
         url = self.title_image.url
-        url_split = str(url).split('/')
-        if url_split and url_split[-1] == 'placeholder':
+        url_split = str(url).split("/")
+        if url_split and url_split[-1] == "placeholder":
             return True
         else:
             return False
@@ -60,17 +60,22 @@ class Book(models.Model):
 
     def get_genre(self):
         return list(self.genres.all())
-    
+
     def get_authors(self):
         return list(self.authors.all())
-    
+
     @classmethod
     def get_latest(cls, limit=3):
-        latest_books = cls.objects.filter(is_visible=True).order_by('-created_at').all()[:limit]
+        latest_books = (
+            cls.objects.filter(is_visible=True)
+            .order_by("-created_at")
+            .all()[:limit]
+        )
         return latest_books
-        
+
     get_authors.short_description = "Authors"
     get_genre.short_description = "Genre"
+
 
 class ExamplePage(models.Model):
     example_page = CloudinaryField("image", default="placeholder")
