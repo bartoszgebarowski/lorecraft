@@ -32,8 +32,8 @@ class Genre(models.Model):
 class Book(models.Model):
     title = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(max_length=100, unique=True)
-    author = models.ManyToManyField(Author)
-    genre = models.ManyToManyField(Genre)
+    authors = models.ManyToManyField(Author)
+    genres = models.ManyToManyField(Genre)
     is_featured = models.BooleanField(default=False)
     is_visible = models.BooleanField(default=False)
     year_of_published = models.IntegerField()
@@ -46,19 +46,31 @@ class Book(models.Model):
         auto_now=True, null=True, editable=False, verbose_name="Updated at"
     )
 
+    @property
+    def is_img_default(self):
+        url = self.title_image.url
+        url_split = str(url).split('/')
+        if url_split and url_split[-1] == 'placeholder':
+            return True
+        else:
+            return False
+
     def __str__(self) -> str:
         return f"{self.title}"
 
     def get_genre(self):
-        return list(self.genre.all())
-
-    get_genre.short_description = "Genre"
-
+        return list(self.genres.all())
+    
     def get_authors(self):
-        return list(self.author.all())
-
+        return list(self.authors.all())
+    
+    @classmethod
+    def get_latest(cls, limit=3):
+        latest_books = cls.objects.filter(is_visible=True).order_by('-created_at').all()[:limit]
+        return latest_books
+        
     get_authors.short_description = "Authors"
-
+    get_genre.short_description = "Genre"
 
 class ExamplePage(models.Model):
     example_page = CloudinaryField("image", default="placeholder")

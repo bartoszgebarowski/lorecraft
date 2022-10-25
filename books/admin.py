@@ -5,7 +5,7 @@ from .models import Author, Book, ExamplePage, Genre
 
 
 class BookAdmin(admin.ModelAdmin):
-    list_filter = ["author", "title", "genre"]
+    list_filter = ["authors", "title", "genres"]
     list_display = (
         "title",
         "is_visible",
