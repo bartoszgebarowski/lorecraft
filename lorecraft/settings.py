@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     "cloudinary",
     "static_pages",
     "accounts",
+    "books",
 ]
 
 SITE_ID = 1
