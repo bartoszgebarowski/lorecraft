@@ -3,14 +3,14 @@
 {% load static %}
 {% block content %}
     <main>
-      <section>
+      <section class="container">
         <h2 class="text-center">Latest</h2>
         <div class="container">
-          <div class="row">
+          <div class="row justify-content-center align-items-center">
             {% for book in latest_books  %}
-            <div class="col-4">
-              <div class="card" style="width: 18rem;">
-                <img src="{{book.title_image.url}}" class="book-cover-small p-0 m-2"
+            <div class="col-lg-4 col-12 text-center">
+              <div class="card">
+                <img src="{{book.title_image.url}}" class="book-cover-small mx-auto d-block mt-2"
                 {% if book.is_img_default %}
                   alt="Placeholder. Cover not available"
                 {% else %}
@@ -22,8 +22,7 @@
                   <h6 class="card-subtitle mb-2 text-muted">
                     {% for author in book.authors.all %} {{author.first_name}} {{author.last_name}}{% endfor %}
                   </h6>
-                  <p class="card-text">{{book.description}}</p>
-                  <div>
+                  <div class="small">
                     Categories:{% for genre in book.genres.all %} {{ genre | title }} {% endfor %}
                   </div>
                 </div>
