@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     "static_pages",
     "accounts",
     "books",
+    "reviews",
 ]
 
 SITE_ID = 1
