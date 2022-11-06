@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %}Home Page{% endblock  %}
+{% load static %}
+{% block content %}
+<main>
+  <section class="container">
+    <h2 class="text-center">All books</h2>
+    <!--TODO add searchbar-->
+    <div class="container">
+      <div class="row justify-content-center align-items-center">
+        {% for book in page_obj %}
+        <div class="col-lg-4 col-12 text-center">
+          <div class="card">
+            <img src="{{book.title_image.url}}" class="book-cover-small mx-auto d-block mt-2"
+            {% if book.is_img_default %}
+              alt="Placeholder. Cover not available"
+            {% else %}
+              alt="{{book.title}}'s cover"
+            {% endif %}
+            >
+            <div class="card-body">
+              <h5 class="card-title">{{book.title}}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">
+                {% for author in book.authors.all %} {{author.first_name}} {{author.last_name}}{% endfor %}
+              </h6>
+              <div class="small">
+                Categories:{% for genre in book.genres.all %} {{ genre | title }} {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+</main>
+<!-- TODO PAGINATION  -->
+<div class="pagination">
+  <span class="step-links">
+      {% if page_obj.has_previous %}
+          <a href="?page=1">&laquo; first</a>
+          <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+      {% endif %}
+
+      <span class="current">
+          Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+      </span>
+
+      {% if page_obj.has_next %}
+          <a href="?page={{ page_obj.next_page_number }}">next</a>
+          <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+      {% endif %}
+  </span>
+</div>
+{% endblock %}

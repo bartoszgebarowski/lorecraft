@@ -17,10 +17,12 @@ from django.contrib import admin
 from django.urls import include, path
 
 from accounts import views
+from books.views import BookView
 from static_pages.views import HomeView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", HomeView.as_view()),
     path("accounts/", include("allauth.urls")),
+    path("books/", BookView.as_view(), name="books"),
 ]
