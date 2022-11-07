@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, TemplateView
+from django.views.generic import DetailView, ListView, TemplateView
 
 from books.models import Book
 
@@ -20,3 +20,9 @@ class BookView(ListView):
     model = Book
     paginate_by = 3
     ordering = "-created_at"
+
+
+class SingleBook(DetailView):
+    template_name = "single_book.html"
+    model = Book
+    pk_url_kwarg = "Book.slug"

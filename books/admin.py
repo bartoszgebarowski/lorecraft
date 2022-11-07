@@ -13,6 +13,9 @@ class BookAdmin(admin.ModelAdmin):
         "get_authors",
         "get_genre",
     )
+    prepopulated_fields = {
+        "slug": ("title",),
+    }
 
 
 admin.site.register(Book, BookAdmin)
