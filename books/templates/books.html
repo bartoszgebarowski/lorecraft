@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Home Page{% endblock  %}
+{% block title %}All books{% endblock  %}
 {% load static %}
 {% block content %}
 <main>
@@ -11,13 +11,16 @@
         {% for book in page_obj %}
         <div class="col-lg-4 col-12 text-center">
           <div class="card">
-            <img src="{{book.title_image.url}}" class="book-cover-small mx-auto d-block mt-2"
-            {% if book.is_img_default %}
-              alt="Placeholder. Cover not available"
-            {% else %}
+            <a href="{{book.slug}}">
+              <img src="{{book.title_image.url}}" class="book-cover-small mx-auto d-block mt-2"
+              {% if book.is_img_default %}
+                alt="Placeholder. Cover not available"
+              {% else %}
               alt="{{book.title}}'s cover"
-            {% endif %}
+                {% endif %}
             >
+            </a>
+            
             <div class="card-body">
               <h5 class="card-title">{{book.title}}</h5>
               <h6 class="card-subtitle mb-2 text-muted">
