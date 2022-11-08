@@ -3,12 +3,11 @@ from django.db import models
 from accounts.models import MyUser
 from books.models import Book
 
-# Create your models here.
 
 
 class Review(models.Model):
-    author = models.ForeignKey(MyUser, on_delete=models.CASCADE)
-    context = models.TextField()
+    user = models.ForeignKey(MyUser, on_delete=models.CASCADE)
+    content = models.TextField()
     rating = models.IntegerField(default=1)
     is_approved = models.BooleanField(default=False)
     created_at = models.DateTimeField(
@@ -21,3 +20,6 @@ class Review(models.Model):
     book = models.ForeignKey(
         Book, on_delete=models.CASCADE, related_name="reviews"
     )
+
+    def __str__(self) -> str:
+        return f"{self.book} review"
