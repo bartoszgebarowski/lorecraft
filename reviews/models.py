@@ -4,7 +4,6 @@ from accounts.models import MyUser
 from books.models import Book
 
 
-
 class Review(models.Model):
     user = models.ForeignKey(MyUser, on_delete=models.CASCADE)
     content = models.TextField()
