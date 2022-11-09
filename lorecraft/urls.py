@@ -22,7 +22,7 @@ from static_pages.views import HomeView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", HomeView.as_view()),
+    path("", HomeView.as_view(), name="homepage"),
     path("accounts/", include("allauth.urls")),
     path("books/", BookView.as_view(), name="books"),
     path("books/<slug>", SingleBook.as_view(), name="book"),
