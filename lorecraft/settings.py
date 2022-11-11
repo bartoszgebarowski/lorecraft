@@ -30,7 +30,7 @@ IS_PROD = os.getenv("ENV", "development").lower() == "production"
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = IS_PROD is False
+DEBUG = os.getenv("DEBUG", False)
 
 ALLOWED_HOSTS = ["pp4-lorecraft.herokuapp.com", "localhost", "127.0.0.1"]
 
