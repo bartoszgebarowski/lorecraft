@@ -6,19 +6,21 @@
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 
 {% block content %}
-<div class="d-flex flex-column align-items-center">
-<h1>{% trans "Register" %}</h1>
-
-<p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
-
-<form class="signup d-flex flex-column align-items-left" id="signup_form" method="post" action="{% url 'account_signup' %}">
-  {% csrf_token %}
-  {{ form }}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-  <button class="btn btn-primary mt-3" type="submit">{% trans "Sign Up" %}</button>
-</form>
+<main>
+  <div class="d-flex flex-column align-items-center">
+    <h1>{% trans "Register" %}</h1>
+    
+    <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+    
+    <form class="signup d-flex flex-column align-items-left" id="signup_form" method="post" action="{% url 'account_signup' %}">
+      {% csrf_token %}
+      {{ form }}
+      {% if redirect_field_value %}
+      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+      {% endif %}
+      <button class="btn btn-primary mt-3" type="submit">{% trans "Sign Up" %}</button>
+    </form>
+    </div>
+</main>
 
 {% endblock %}
-</div>
