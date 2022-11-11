@@ -17,7 +17,7 @@
       id="navbarNavAltMarkup"
     >
       <div class="navbar-nav">
-        <a class="nav-link disabled" aria-current="Home" href="#">Home</a>
+        <a class="nav-link" href="{% url 'homepage'%}">Home</a>
         {% if user.is_authenticated %}
           <a class="nav-link" href="{% url 'account_logout' %}">Log out</a>
           <a class="nav-link" href="{% url "books" %}">Books</a>
