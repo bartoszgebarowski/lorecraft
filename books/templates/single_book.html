@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}{{book.title}} preview {% endblock  %}
+{% load static %}
+{% block content %}
+<main>
+    <h2>{{book.title }}</h2>
+    {% for author in book.authors.all %} {{author.first_name}} {{author.last_name}}{% endfor %}
+</main>
+{% endblock %}

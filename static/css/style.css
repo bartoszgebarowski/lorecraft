@@ -1,0 +1,22 @@
+/* ACCOUNTS */
+input {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* BOOK */
+
+.book-cover-small {
+    width: 90px; 
+    height: 130px;
+}
+
+.card {
+    margin-bottom: 20px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
