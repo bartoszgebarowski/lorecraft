@@ -30,7 +30,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, "templates")
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = "DEVELOPMENT" in os.environ
+DEBUG = os.getenv("ENV") == "DEVELOPMENT"
 
 ALLOWED_HOSTS = ["pp4-lorecraft.herokuapp.com", "localhost", "127.0.0.1"]
 
@@ -91,7 +91,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "lorecraft.wsgi.application"
 
-    
+
 if DEBUG:
     DATABASES = {
         "default": {

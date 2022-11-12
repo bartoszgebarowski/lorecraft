@@ -1,9 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
+from django.urls import reverse
 from django.views.generic import DetailView, ListView, TemplateView
 
 from books.models import Book
-
-# Create your views here.
+from reviews.forms import ReviewForm
+from reviews.models import Review
 
 
 class HomeView(TemplateView):
@@ -26,3 +27,16 @@ class SingleBook(DetailView):
     template_name = "single_book.html"
     model = Book
     pk_url_kwarg = "Book.slug"
+
+
+def create_review(request, slug):
+    if request.method == "post":
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(
+                reverse("book", kwargs={"id": form.cleaned_data["book_id"]})
+            )
+    form = ReviewForm()
+    context = {"form": form}
+    return render(request, "create_review.html", context)
