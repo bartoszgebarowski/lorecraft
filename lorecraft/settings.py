@@ -21,7 +21,7 @@ if os.path.isfile("env.py"):
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = os.path.join(BASE_DIR, "templates")
-IS_PROD = os.getenv("ENV", "development").lower() == "production"
+# IS_PROD = os.getenv("ENV", "development").lower() == "production"
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -30,7 +30,7 @@ IS_PROD = os.getenv("ENV", "development").lower() == "production"
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = IS_PROD is False
+DEBUG = "DEVELOPMENT" in os.environ
 
 ALLOWED_HOSTS = ["pp4-lorecraft.herokuapp.com", "localhost", "127.0.0.1"]
 
@@ -91,9 +91,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "lorecraft.wsgi.application"
 
-if IS_PROD:
-    DATABASES = {"default": dj_database_url.parse(os.environ["DATABASE_URL"])}
-else:
+    
+if DEBUG:
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.postgresql",
@@ -103,6 +102,8 @@ else:
             "PASSWORD": os.getenv("DB_PASS"),
         }
     }
+else:
+    DATABASES = {"default": dj_database_url.parse(os.environ["DATABASE_URL"])}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
