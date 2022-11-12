@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     "accounts",
     "books",
     "reviews",
+    'crispy_forms',
 ]
 
 SITE_ID = 1
@@ -157,3 +158,5 @@ DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = "accounts.MyUser"
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
