@@ -54,7 +54,7 @@ INSTALLED_APPS = [
     "accounts",
     "books",
     "reviews",
-    'crispy_forms',
+    "crispy_forms",
 ]
 
 SITE_ID = 1
@@ -159,4 +159,4 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = "accounts.MyUser"
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+CRISPY_TEMPLATE_PACK = "bootstrap4"

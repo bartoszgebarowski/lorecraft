@@ -17,7 +17,8 @@ from django.contrib import admin
 from django.urls import include, path
 
 from accounts import views
-from books.views import BookView, SingleBook, create_review
+from books.views import BookView, SingleBook
+from reviews.views import CreateReview
 from static_pages.views import HomeView
 
 urlpatterns = [
@@ -26,5 +27,9 @@ urlpatterns = [
     path("accounts/", include("allauth.urls")),
     path("books/", BookView.as_view(), name="books"),
     path("books/<slug>", SingleBook.as_view(), name="book"),
-    path("books/<slug>/create-review", create_review, name="create_review"),
+    path(
+        "books/<slug>/create-review",
+        CreateReview.as_view(),
+        name="create_review",
+    ),
 ]
