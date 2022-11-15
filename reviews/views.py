@@ -1,14 +1,16 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import get_object_or_404
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.core.exceptions import PermissionDenied
+from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse
 from django.views.generic import CreateView
 
 from books.models import Book
+from reviews.models import Review
 
 from .forms import ReviewForm
 
 
-# Create your views here.
-class CreateReview(LoginRequiredMixin, CreateView):
+class CreateReview(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     form_class = ReviewForm
     template_name = "create_review.html"
 
@@ -30,3 +32,22 @@ class CreateReview(LoginRequiredMixin, CreateView):
         self.object.user_id = self.request.user.pk
         self.object.save
         return super().form_valid(form)
+
+
+def edit_review(request, review_id):
+    review = get_object_or_404(Review, id=review_id)
+    if review.user != request.user:
+        raise PermissionDenied
+    if request.method == "POST":
+        form = ReviewForm(request.POST, instance=review)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse("book", kwargs={"slug": review.book.slug}))
+    form = ReviewForm(instance=review)
+    context = {
+        "form": form,
+        "instance": review,
+        "content": review.content,
+        "rating": review.rating,
+    }
+    return render(request, "edit_review.html", context)

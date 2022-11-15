@@ -18,7 +18,7 @@ from django.urls import include, path
 
 from accounts import views
 from books.views import BookView, SingleBook
-from reviews.views import CreateReview
+from reviews.views import CreateReview, edit_review
 from static_pages.views import HomeView
 
 urlpatterns = [
@@ -32,4 +32,5 @@ urlpatterns = [
         CreateReview.as_view(),
         name="create_review",
     ),
+    path("reviews/<review_id>", edit_review, name="edit_review"),
 ]
