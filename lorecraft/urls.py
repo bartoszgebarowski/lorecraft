@@ -18,7 +18,8 @@ from django.urls import include, path
 
 from accounts import views
 from books.views import BookView, SingleBook
-from reviews.views import CreateReview, edit_review
+from reviews.views import (CreateReview, delete_review,
+                           delete_review_confirmation, edit_review)
 from static_pages.views import HomeView
 
 urlpatterns = [
@@ -33,4 +34,14 @@ urlpatterns = [
         name="create_review",
     ),
     path("reviews/<review_id>", edit_review, name="edit_review"),
+    path(
+        "reviews/delete_review/<review_id>",
+        delete_review_confirmation,
+        name="delete_review_confirmation",
+    ),
+    path(
+        "reviews/delete_review/delete/<review_id>",
+        delete_review,
+        name="delete_review",
+    ),
 ]

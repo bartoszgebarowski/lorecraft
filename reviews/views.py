@@ -56,7 +56,25 @@ def edit_review(request, review_id):
     context = {
         "form": form,
         "instance": review,
-        "content": review.content,
-        "rating": review.rating,
     }
     return render(request, "edit_review.html", context)
+
+
+def delete_review(request, review_id):
+    review = get_object_or_404(Review, id=review_id)
+    if review.user != request.user:
+        raise PermissionDenied
+    else:
+        review.delete()
+        return redirect(reverse("book", kwargs={"slug": review.book.slug}))
+
+
+def delete_review_confirmation(request, review_id):
+    review = get_object_or_404(Review, id=review_id)
+    if review.user != request.user:
+        raise PermissionDenied
+    else:
+        context = {
+            "instance": review,
+        }
+        return render(request, "delete_review_confirmation.html", context)

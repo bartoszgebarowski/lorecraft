@@ -15,7 +15,8 @@
                 {{review.created_at | date:"d.m.y"}}
                 {% if review.user.pk == user.pk %}
                 <div class="container-fluid">
-                    <button><a href="{% url 'edit_review' review.id %}">click me</a></button>
+                    <a href="{% url 'edit_review' review.id %}"><button>Edit</button></a>
+                    <a href="{% url 'delete_review_confirmation' review.id %}"><button> Delete </button></a>
                 </div>
                 {% endif %}
             </div>

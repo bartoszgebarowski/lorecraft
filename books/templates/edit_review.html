@@ -7,7 +7,8 @@
     <h1>Edit Review {{instance.book.title}}</h1>
     <form method="POST">
         {% csrf_token %}
-        {{form | crispy}}
+        {{form.content|as_crispy_field}}
+        {{form.rating|as_crispy_field}}
         <div>
             <button type="submit">Edit review</button>
         </div>
