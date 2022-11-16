@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}{{book.title}} preview {% endblock  %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<main>
+    <h1>Add review to {{book.title}}</h1>
+    <form method="POST" action="{% url 'create_review' book.slug %}">
+        {% csrf_token %}
+        {{form | crispy}}
+        <div>
+            <button type="submit">Add review</button>
+        </div>
+    </form>
+</main>
+{% endblock %}

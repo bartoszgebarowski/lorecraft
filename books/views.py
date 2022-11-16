@@ -1,9 +1,6 @@
-from django.shortcuts import render
 from django.views.generic import DetailView, ListView, TemplateView
 
 from books.models import Book
-
-# Create your views here.
 
 
 class HomeView(TemplateView):
