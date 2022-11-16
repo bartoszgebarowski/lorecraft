@@ -20,6 +20,15 @@ class CreateReview(LoginRequiredMixin, UserPassesTestMixin, CreateView):
         context["book"] = book
         return context
 
+    def test_func(self):
+        try:
+            Review.objects.filter(
+                book__slug=self.kwargs["slug"], user=self.request.user
+            ).get()
+            return False
+        except Review.DoesNotExist:
+            return True
+
     def get_success_url(self):
         from django.urls import reverse
 
