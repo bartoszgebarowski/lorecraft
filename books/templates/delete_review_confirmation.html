@@ -3,7 +3,6 @@
 {% load static %}
 {% load crispy_forms_tags %}
 {% block content %}
-<main>
     <h1>Delete review for {{instance.book.title}}</h1>
     <div>
         Review content : {{instance.content}}
@@ -14,5 +13,4 @@
             </a>
         </div>
     </form>
-</main>
 {% endblock %}

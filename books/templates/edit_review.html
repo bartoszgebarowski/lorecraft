@@ -3,7 +3,6 @@
 {% load static %}
 {% load crispy_forms_tags %}
 {% block content %}
-<main>
     <h1>Edit Review {{instance.book.title}}</h1>
     <form method="POST">
         {% csrf_token %}
@@ -13,5 +12,4 @@
             <button type="submit">Edit review</button>
         </div>
     </form>
-</main>
 {% endblock %}

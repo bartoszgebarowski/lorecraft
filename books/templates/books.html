@@ -2,7 +2,6 @@
 {% block title %}All books{% endblock  %}
 {% load static %}
 {% block content %}
-<main>
   <section class="container">
     <h2 class="text-center">All books</h2>
     <!--TODO add searchbar-->
@@ -35,9 +34,10 @@
       </div>
     </div>
   </section>
-</main>
 <!-- TODO PAGINATION  -->
-<div class="pagination">
+{% endblock %}
+{% block pagination%}
+<div class="d-flex justify-content-center mb-2">
   <span class="step-links">
       {% if page_obj.has_previous %}
           <a href="?page=1">&laquo; first</a>
@@ -54,4 +54,5 @@
       {% endif %}
   </span>
 </div>
-{% endblock %}
+
+{% endblock  %}
