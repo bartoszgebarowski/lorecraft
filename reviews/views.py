@@ -21,13 +21,12 @@ class CreateReview(LoginRequiredMixin, UserPassesTestMixin, CreateView):
         return context
 
     def test_func(self):
-        try:
-            Review.objects.filter(
-                book__slug=self.kwargs["slug"], user=self.request.user
-            ).get()
+        if self.request.user.is_authenticated:
+            return self.request.user.is_review_eligible(
+                book_slug=self.kwargs["slug"]
+            )
+        else:
             return False
-        except Review.DoesNotExist:
-            return True
 
     def get_success_url(self):
         from django.urls import reverse
@@ -39,7 +38,7 @@ class CreateReview(LoginRequiredMixin, UserPassesTestMixin, CreateView):
         self.object = form.save(commit=False)
         self.object.book = book
         self.object.user_id = self.request.user.pk
-        self.object.save
+        self.object.save()
         return super().form_valid(form)
 
 

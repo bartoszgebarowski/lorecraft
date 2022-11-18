@@ -1,6 +1,12 @@
 from django.contrib.auth.models import AbstractUser
-from django.db import models
 
 
 class MyUser(AbstractUser):
-    pass
+    def is_review_eligible(self, book_slug):
+        from reviews.models import Review
+
+        exists = Review.objects.filter(
+            user_id=self.pk, book__slug=book_slug
+        ).exists()
+
+        return not exists
