@@ -2,36 +2,11 @@
 {% block title %}{{book.title}} preview {% endblock  %}
 {% load static %}
 {% block content %}
-<main>
-    <section>
-        <h2>{{book.title}}</h2>
-    </section>
-    <section>
-        <h3>Reviews</h3>
-        {% for review in book.reviews.all %} 
-            <div class="container-fluid bd-light">
-                {{review.user}}
-                {{review.content}}
-                {{review.created_at | date:"d.m.y"}}
-                {% if review.user.pk == user.pk %}
-                <div class="container-fluid">
-                    <a href="{% url 'edit_review' review.id %}"><button>Edit</button></a>
-                    <a href="{% url 'delete_review_confirmation' review.id %}"><button> Delete </button></a>
-                </div>
-                {% endif %}
-            </div>
-        {% empty %}
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12 text-center">
-                        No reviews are available for this book. 
-                    </div>
-                </div>
-            </div>
-        {% endfor %}
-    </section>
-    <section>
-        <h4>Add Review form</h4>
-    </section>
-</main>
+{% endblock %}
+{% block extra_content %}
+    {% if is_review_eligible %}
+    <div class="text-center mb-2">
+        <a href="{% url 'create_review' book.slug %}" class="btn btn-primary btn-sm active btn-success" role="button" aria-label="Add review to {{book.title}}"aria-pressed="true">Add review</a>
+    </div>
+    {% endif %}
 {% endblock %}
