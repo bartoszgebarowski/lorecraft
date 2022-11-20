@@ -28,6 +28,10 @@ footer {
   gap: 5px;
 }
 
+.font-size-32px {
+  font-size: 32px;
+}
+
 
 /* ACCOUNTS */
 input {
@@ -35,7 +39,7 @@ input {
     margin-bottom: 20px;
 }
 
-/* BOOK */
+/* ALL BOOKS */
 
 .book-cover-small {
     width: 90px; 
@@ -46,3 +50,71 @@ input {
     margin-bottom: 20px;
 }
 
+/* SINGLE PAGE */
+.single-book-flex-container {
+  display: flex;
+  justify-content: start;
+}
+
+.example-image-container {
+  width: 200px;
+  height: 200px;
+  
+}
+
+.book-info-flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.example-image-container img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  border: 5px black solid;
+  padding: 10px;
+}
+
+.gallery-image {
+  cursor: pointer;
+}
+
+.flex-add-review-container {
+  display: flex;
+  justify-content: start;
+}
+
+#modal-img {
+  max-width: 100%;
+  height: auto;
+  display: inline-block;
+}
+
+.section-header {
+  font-size: 32px;
+}
+
+
+/* MEDIA QUERIES*/
+
+@media screen and (max-width: 720px) {
+  .single-book-flex-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .flex-add-review-container {
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .book-info-flex-container {
+    flex-direction: column;
+  }
+
+  .overall-rating {
+    text-align: center;
+  }
+}
