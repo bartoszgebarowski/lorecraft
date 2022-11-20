@@ -1,9 +1,61 @@
 {% extends 'base.html' %}
-{% block title %}{{book.title}} preview {% endblock  %}
+{% block title %}{{book.title}} single page {% endblock  %}
 {% load static %}
 {% block content %}
+    <section class="border-bottom">
+        <h2 class="mb-0 text-center">{{book.title}}</h2>
+        <div class="mx-3">
+            <div class="book-info-flex-container gap-5px mt-2">
+                Authors: 
+                {% for author in book.authors.all %} 
+                    <div class="text-center">
+                        {{author.first_name}} {{author.last_name}}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="book-info-flex-container gap-5px mt-2">
+                Categories:
+                    {% for genre in book.genres.all %} 
+                        <div class="text-center">
+                            {{ genre | title }}
+                        </div>
+                    {% endfor %}
+            </div>
+            <div class="mt-2">
+                Overall rating: 
+            </div>       
+        </div>
+        <div class="single-book-flex-container gap-5px mt-2 mb-2 mx-3">
+            <div class="example-image-container">
+                <img class="gallery-image" src="{{book.title_image.url}}"
+                {% if book.is_img_default %}
+                    alt="Placeholder. Cover not available"
+                {% else %}
+                    alt="{{book.title}}'s cover"
+                {% endif %}
+                >
+                </a>
+            </div>
+            {% for book_image in book.example_pages.all%}
+                <div class="example-image-container">
+                    <img class="gallery-image" src="{{book_image.example_page.url}}" alt="{{book.title}} example page {{forloop.counter}} of {{book.example_pages.all | length }}">
+                </div>
+            {% endfor %}
+        </div>
+        {% if is_review_eligible %}
+            <div class="flex-add-review-container mt-2 mb-2 mx-3">
+                <a href="{% url 'create_review' book.slug %}" class="btn btn-primary btn-sm active btn-success" role="button" aria-label="Add review to {{book.title}}"aria-pressed="true">Add review</a>
+            </div>
+        {% endif %}
+    </section>
+    <section>
+        <h3 class="text-center">Book description</h3>
+        <div class="mx-3">
+            {{book.description}}
+        </div>
+    </section>
     <section class='bg-light'>
-        <h2 class="text-center mb-0">Reviews:</h2>
+        <h4 class="text-center mb-0 border-bottom">Reviews:</h2>
         {% for review in book.reviews.all %}
         {% if not review.is_approved %}
             {% if review.user.pk == user.pk %}
@@ -51,10 +103,23 @@
     {% endfor %} 
     </section>
 {% endblock %}
-{% block extra_content %}
-    {% if is_review_eligible %}
-    <div class="text-center mb-2">
-        <a href="{% url 'create_review' book.slug %}" class="btn btn-primary btn-sm active btn-success" role="button" aria-label="Add review to {{book.title}}"aria-pressed="true">Add review</a>
+{% block modal %}  
+<!-- Modal -->
+<div class="modal fade" id="img-modal" tabindex="-1" aria-labelledby="Example image modal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <img id="modal-img" src="" alt="{{book.title}} example page">
+                </div>
+            </div>
+        </div>
     </div>
-    {% endif %}
-{% endblock %}
+</div>
+{% endblock  %}
+{% block extra_js %}
+    <script src="{% static 'javascript/script.js' %}"></script>
+{% endblock  %}
