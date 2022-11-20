@@ -28,6 +28,10 @@ footer {
   gap: 5px;
 }
 
+.font-size-32px {
+  font-size: 32px;
+}
+
 
 /* ACCOUNTS */
 input {
@@ -87,6 +91,10 @@ input {
   display: inline-block;
 }
 
+.section-header {
+  font-size: 32px;
+}
+
 
 /* MEDIA QUERIES*/
 
@@ -104,5 +112,9 @@ input {
 @media screen and (max-width: 500px) {
   .book-info-flex-container {
     flex-direction: column;
+  }
+
+  .overall-rating {
+    text-align: center;
   }
 }

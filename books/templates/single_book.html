@@ -3,7 +3,7 @@
 {% load static %}
 {% block content %}
     <section class="border-bottom">
-        <h2 class="mb-0 text-center">{{book.title}}</h2>
+        <h2 class="mb-0 text-center section-header">{{book.title}}</h2>
         <div class="mx-3">
             <div class="book-info-flex-container gap-5px mt-2">
                 Authors: 
@@ -21,8 +21,13 @@
                         </div>
                     {% endfor %}
             </div>
-            <div class="mt-2">
-                Overall rating: 
+            <div class="overall-rating mt-2 font-size-32px">
+                Overall rating:
+                {% if rating %}
+                    {{rating}}
+                {% else %}
+                    No ratings
+                {% endif %} 
             </div>       
         </div>
         <div class="single-book-flex-container gap-5px mt-2 mb-2 mx-3">
@@ -49,13 +54,13 @@
         {% endif %}
     </section>
     <section>
-        <h3 class="text-center">Book description</h3>
+        <h3 class="text-center section-header">Book description</h3>
         <div class="mx-3">
             {{book.description}}
         </div>
     </section>
     <section class='bg-light'>
-        <h4 class="text-center mb-0 border-bottom">Reviews:</h2>
+        <h4 class="text-center mb-0 border-bottom section-header">Reviews:</h2>
         {% for review in book.reviews.all %}
         {% if not review.is_approved %}
             {% if review.user.pk == user.pk %}
