@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   initiateModalImages();
+  removeElementAfterTime(removeSuccessDiv, 3000);
 });
 
 function createModal() {
@@ -23,5 +24,16 @@ function initiateModalImages() {
     image.addEventListener("click", function () {
       imageSrcReplacer(image);
     });
+  }
+}
+
+function removeElementAfterTime(functionToExecute, time) {
+  setTimeout(functionToExecute, time);
+}
+
+function removeSuccessDiv() {
+  let targetedDiv = document.getElementById("success_message");
+  if (targetedDiv) {
+    targetedDiv.remove();
   }
 }
