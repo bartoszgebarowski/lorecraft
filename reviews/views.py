@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404, redirect, render
@@ -39,23 +40,31 @@ class CreateReview(LoginRequiredMixin, UserPassesTestMixin, CreateView):
         self.object.book = book
         self.object.user_id = self.request.user.pk
         self.object.save()
+
+        messages.success(
+            self.request, f"Review succesfully added to {book.title}"
+        )
+
         return super().form_valid(form)
 
 
 def edit_review(request, review_id):
     review = get_object_or_404(Review, id=review_id)
+    context = {}
+
     if review.user != request.user:
         raise PermissionDenied
     if request.method == "POST":
         form = ReviewForm(request.POST, instance=review)
         if form.is_valid():
             form.save()
+            messages.success(request, message="Review succesfully edited")
             return redirect(reverse("book", kwargs={"slug": review.book.slug}))
-    form = ReviewForm(instance=review)
-    context = {
-        "form": form,
-        "instance": review,
-    }
+        else:
+            context["form"] = form
+    else:
+        context["form"] = ReviewForm(instance=review)
+    context["instance"] = review
     return render(request, "edit_review.html", context)
 
 
@@ -65,6 +74,7 @@ def delete_review(request, review_id):
         raise PermissionDenied
     else:
         review.delete()
+        messages.success(request, message="Review succesfully deleted")
         return redirect(reverse("book", kwargs={"slug": review.book.slug}))
 
 
