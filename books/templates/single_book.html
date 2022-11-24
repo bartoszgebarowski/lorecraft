@@ -3,7 +3,7 @@
 {% load static %}
 {% block content %}
     <section class="border-bottom">
-        <h2 class="mb-0 text-center section-header">{{book.title}}</h2>
+        <h1 class="mb-0 text-center section-header">{{book.title}}</h1>
         <div class="mx-3">
             <div class="book-info-flex-container gap-5px mt-2">
                 Authors: 
@@ -24,7 +24,7 @@
             <div class="overall-rating mt-2 font-size-32px">
                 Overall rating:
                 {% if rating %}
-                    {{rating}}
+                    {{rating | floatformat}}
                 {% else %}
                     No ratings
                 {% endif %} 
@@ -54,13 +54,13 @@
         {% endif %}
     </section>
     <section>
-        <h3 class="text-center section-header">Book description</h3>
+        <h2 class="text-center section-header">Book description</h2>
         <div class="mx-3">
             {{book.description}}
         </div>
     </section>
     <section class='bg-light'>
-        <h4 class="text-center mb-0 border-bottom section-header">Reviews:</h2>
+        <h3 class="text-center mb-0 border-bottom section-header">Reviews:</h3>
         {% for review in book.reviews.all %}
         {% if not review.is_approved %}
             {% if review.user.pk == user.pk %}
@@ -110,7 +110,7 @@
 {% endblock %}
 {% block modal %}  
 <!-- Modal -->
-<div class="modal fade" id="img-modal" tabindex="-1" aria-labelledby="Example image modal" aria-hidden="true">
+<div class="modal fade" id="img-modal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content">
             <div class="modal-header">
