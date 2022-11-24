@@ -57,6 +57,7 @@ def edit_review(request, review_id):
     if request.method == "POST":
         form = ReviewForm(request.POST, instance=review)
         if form.is_valid():
+            review.is_approved = False
             form.save()
             messages.success(request, message="Review succesfully edited")
             return redirect(reverse("book", kwargs={"slug": review.book.slug}))

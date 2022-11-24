@@ -3,14 +3,19 @@
 {% load static %}
 {% load crispy_forms_tags %}
 {% block content %}
+<div class="d-flex align-items-center flex-column">
     <h1>Delete review for {{instance.book.title}}</h1>
-    <div>
-        Review content : {{instance.content}}
+    <div class="text-center">
+        Review content :
+        <div class="text-center">
+            {{instance.content}}
+        </div>
     </div>
-        <div>
+        <div class="text-center">
             <a href="{% url 'delete_review' instance.id %}">
-                <button type="submit">Delete Review</button>
+                <button type="submit" class="btn btn-danger mt-2">Delete Review</button>
             </a>
         </div>
     </form>
+</div>
 {% endblock %}
