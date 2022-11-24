@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function createModal() {
   let modal = new bootstrap.Modal(document.querySelector("#img-modal"), {
     keyboard: false,
-    backdrop: true,
+    backdrop: "static",
   });
   modal.show();
 }
