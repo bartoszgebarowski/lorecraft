@@ -1,5 +1,6 @@
 from cloudinary.models import CloudinaryField
 from django.db import models
+from django.db.models import Avg
 
 
 class Author(models.Model):
@@ -72,6 +73,25 @@ class Book(models.Model):
             .all()[:limit]
         )
         return latest_books
+
+    @classmethod
+    def get_average_rating(cls, book_slug):
+        rating = (
+            cls.objects.filter(reviews__is_approved=True, slug=book_slug)
+            .all()
+            .aggregate(Avg("reviews__rating"))
+        )
+        return rating["reviews__rating__avg"]
+
+    @classmethod
+    def get_best_rated_books(cls, limit=3):
+        best_books = (
+            cls.objects.filter(reviews__is_approved=True)
+            .annotate(average_rating=Avg("reviews__rating"))
+            .order_by("-average_rating")[:limit]
+            .all()
+        )
+        return best_books
 
     get_authors.short_description = "Authors"
     get_genre.short_description = "Genre"

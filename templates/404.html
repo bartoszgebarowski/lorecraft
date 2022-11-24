@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Error 404 page{% endblock  %}
+{% load static %}
+{% block content %}
+
+<div class="d-flex flex-column align-items-center">
+    <h1>Error 404</h1>
+    <p>The requested url was not found !</p>
+</div>
+<div class="text-center">
+    <a href="{% url 'homepage' %}" class="btn btn-primary mt-2" aria-label="Homepage">Homepage</a>
+</div>
+{% endblock %}
