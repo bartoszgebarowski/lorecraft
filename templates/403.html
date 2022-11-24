@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Error 403 page{% endblock  %}
+{% load static %}
+{% block content %}
+
+<div class="d-flex flex-column align-items-center">
+    <h1>Error 403</h1>
+    <p>You don't have permission to perform that action !</p>
+</div>
+<div class="text-center">
+    <a href="{% url 'homepage' %}" class="btn btn-primary mt-2" aria-label="Homepage">Homepage</a>
+</div>
+{% endblock %}
