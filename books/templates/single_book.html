@@ -89,8 +89,10 @@
                         <div>{{review.created_at | date:"d.m.y"}}</div>
                         <div>Book rating: {{review.rating}}</div>
                     </div>
-                    <div class="col-8">
-                        <div class="d-flex justify-content-start">{{review.content}}</div>
+                    <div class="col-8 word-break-all">
+                        <div class="d-flex justify-content-start word-break-all">
+                            {{review.content}}
+                        </div>
                         {% if review.user.pk == user.pk %}
                             <div class="d-flex justify-content-start gap-5px mt-2">
                                 <a href="{% url 'edit_review' review.id %}" class="btn btn-primary btn-sm active btn-warning gap" role="button" aria-label="Edit review for {{book.title}}"aria-pressed="true">Edit</a>

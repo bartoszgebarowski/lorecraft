@@ -32,8 +32,11 @@ footer {
   font-size: 32px;
 }
 
+.word-break-all {
+  word-break: break-all !important;
+}
 
-/* ACCOUNTS */
+/* FORMS */
 input {
     margin-top: 20px;
     margin-bottom: 20px;
@@ -50,7 +53,7 @@ input {
     margin-bottom: 20px;
 }
 
-/* SINGLE PAGE */
+/* SINGLE BOOK PAGE */
 .single-book-flex-container {
   display: flex;
   justify-content: start;
@@ -93,6 +96,11 @@ input {
 
 .section-header {
   font-size: 32px;
+}
+
+#div_id_rating > div:first-of-type  {
+  display: flex;
+  gap: 5px;
 }
 
 
