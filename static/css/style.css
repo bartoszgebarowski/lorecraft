@@ -53,6 +53,13 @@ input {
     margin-bottom: 20px;
 }
 
+.page-counter {
+  background-color: #212529;
+  color: white;
+  padding: 0.375rem;
+  border-radius: 6px;
+}
+
 /* SINGLE BOOK PAGE */
 .single-book-flex-container {
   display: flex;
@@ -125,4 +132,10 @@ input {
   .overall-rating {
     text-align: center;
   }
+  #paginatior-container a, #paginatior-container span {
+    width:  60px;
+    height: 40px;
+    font-size: 18px;
+  }
 }
+
