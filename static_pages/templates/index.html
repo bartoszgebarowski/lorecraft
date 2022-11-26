@@ -2,13 +2,20 @@
 {% block title %}Home Page{% endblock  %}
 {% load static %}
 {% block content %}
+      <section class="container text-center mt-2">
+        <h1 class="section-header">World of Lorecraft</h1>
+        <div class="hero-img-container">
+          <img src="https://res.cloudinary.com/pp4-lorecraft/image/upload/v1669487065/lorecraft_bfp7z8.webp" alt="Lorecraft logo">
+        </div>
+        <p class="font-size-18px">Read, Rate and Comment on your favourite, Warcraft books!</p>
+      </section>
       <section class="container">
-        <h1 class="text-center section-header">Latest</h1>
+        <h2 class="text-center section-header">Latest</h2>
         <div class="container">
           <div class="row justify-content-center align-items-center">
             {% for book in latest_books  %}
             <div class="col-lg-4 col-12 text-center">
-              <div class="card">
+              <div class="book-card">
                 <a href="{% url "book" book.slug %}" aria-label="{{book.title}} page">
                   <img src="{{book.title_image.url}}" class="book-cover-small mx-auto d-block mt-2"
                   {% if book.is_img_default %}
@@ -18,13 +25,13 @@
                   {% endif %}
                   >
                 </a>
-                <div class="card-body">
-                  <h2 class="card-title">{{book.title}}</h2>
+                <div class="book-card-body">
+                  <h3 class="card-title">{{book.title | truncatechars:15}}</h3>
                   <div class="card-subtitle mb-2 text-muted">
-                    {% for author in book.authors.all %} {{author.first_name}} {{author.last_name}}{% endfor %}
+                    {{ book.authors.all|join:" "|truncatechars:30 }}
                   </div>
                   <div class="small">
-                    Categories:{% for genre in book.genres.all %} {{ genre | title }} {% endfor %}
+                    Categories: {{ book.genres.all|join:" "|truncatechars:30|title }}
                   </div>
                 </div>
               </div>
@@ -34,12 +41,12 @@
         </div>
       </section>
       <section class="container">
-        <h3 class="text-center section-header">Best rated</h3>
+        <h2 class="text-center section-header">Best rated</h2>
         <div class="container">
           <div class="row justify-content-center align-items-center">
             {% for book in best_books %}
             <div class="col-lg-4 col-12 text-center">
-              <div class="card">
+              <div class="book-card">
                 <a href="{% url "book" book.slug %}" aria-label="{{book.title}} page">
                   <img src="{{book.title_image.url}}" class="book-cover-small mx-auto d-block mt-2"
                   {% if book.is_img_default %}
@@ -49,13 +56,13 @@
                   {% endif %}
                   >
                 </a>
-                <div class="card-body">
-                  <h4 class="card-title font-size-32px">{{book.title}}</h4>
+                <div class="book-card-body">
+                  <h3 class="card-title font-size-32px">{{book.title | truncatechars:15}}</h3>
                   <div class="card-subtitle mb-2 text-muted">
-                    {% for author in book.authors.all %} {{author.first_name}} {{author.last_name}}{% endfor %}
+                    {{ book.authors.all|join:" "|truncatechars:30 }}
                   </div>
                   <div class="small">
-                    Categories:{% for genre in book.genres.all %} {{ genre | title }} {% endfor %}
+                    Categories: {{ book.genres.all|join:" "|truncatechars:30|title }}
                   </div>
                 </div>
               </div>

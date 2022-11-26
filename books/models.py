@@ -108,3 +108,6 @@ class ExamplePage(models.Model):
     updated_at = models.DateTimeField(
         auto_now=True, null=True, editable=False, verbose_name="Updated at"
     )
+
+    def __str__(self) -> str:
+        return f"{self.books}"

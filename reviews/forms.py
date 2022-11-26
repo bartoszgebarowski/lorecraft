@@ -10,8 +10,6 @@ class ReviewForm(forms.ModelForm):
         labels = {"content": ("Review content"), "rating": ("Review rating")}
 
     rating = forms.ChoiceField(
-        widget=forms.RadioSelect(
-            attrs={"class": "d-flex gap-5px form-control"}
-        ),
+        widget=forms.RadioSelect(),
         choices=[(f"{i}", f"{i}") for i in range(1, 11)],
     )
