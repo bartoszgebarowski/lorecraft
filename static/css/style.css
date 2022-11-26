@@ -49,8 +49,18 @@ input {
     height: 130px;
 }
 
-.card {
+.book-card {
     margin-bottom: 20px;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height:  400px;
+    background-color: white;
+    border: solid 1px black;
+    border-radius: 5px;
+    gap: 20px;
 }
 
 .page-counter {
@@ -69,7 +79,6 @@ input {
 .example-image-container {
   width: 200px;
   height: 200px;
-  
 }
 
 .book-info-flex-container {
@@ -132,6 +141,7 @@ input {
   .overall-rating {
     text-align: center;
   }
+
   #paginatior-container a, #paginatior-container span {
     width:  60px;
     height: 40px;
