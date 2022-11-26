@@ -32,8 +32,24 @@ footer {
   font-size: 32px;
 }
 
+.font-size-18px {
+  font-size: 18px;
+}
+
 .word-break-all {
   word-break: break-all !important;
+}
+
+/* HERO IMG */
+
+.hero-img-container {
+  display: flex;
+  max-height: 500px;
+}
+
+.hero-img-container img {
+  width: 100%;
+  height: auto;
 }
 
 /* FORMS */
