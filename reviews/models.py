@@ -6,6 +6,8 @@ from books.models import Book
 
 
 class Review(models.Model):
+    """Model to create Reviews"""
+
     user = models.ForeignKey(MyUser, on_delete=models.CASCADE)
     content = models.TextField()
     rating = models.IntegerField(

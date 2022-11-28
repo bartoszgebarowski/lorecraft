@@ -5,6 +5,10 @@ from .models import Review
 
 class ReviewForm(forms.ModelForm):
     class Meta:
+        """Model `Review` form to Create and edit with radio buttons as selection
+        for ratting
+        """
+
         model = Review
         fields = ["content", "rating"]
         labels = {"content": ("Review content"), "rating": ("Review rating")}
