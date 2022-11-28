@@ -25,8 +25,8 @@ class CreateReview(LoginRequiredMixin, UserPassesTestMixin, CreateView):
         return context
 
     def test_func(self):
-        """Checks if `User` has permission to create `Review` and returns 
-        True else False """
+        """Checks if `User` has permission to create `Review` and returns
+        True else False"""
         if self.request.user.is_authenticated:
             return self.request.user.is_review_eligible(
                 book_slug=self.kwargs["slug"]

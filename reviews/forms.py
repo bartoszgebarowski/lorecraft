@@ -5,8 +5,8 @@ from .models import Review
 
 class ReviewForm(forms.ModelForm):
     class Meta:
-        """Model `Review` form to Create and edit with radio buttons as selection
-        for ratting
+        """Model `Review` form to Create and edit with radio buttons as
+        selection for rating
         """
 
         model = Review

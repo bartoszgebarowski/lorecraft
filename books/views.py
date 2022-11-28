@@ -4,8 +4,7 @@ from books.models import Book
 
 
 class BookView(ListView):
-    """Generic `Book` list view, paginated by 3 and sorted by `created_at`
-    """
+    """Generic `Book` list view, paginated by 3 and sorted by `created_at`"""
 
     template_name = "books.html"
     model = Book
