@@ -52,6 +52,16 @@ footer {
   height: auto;
 }
 
+/* FOOTER */
+
+.fa-brands:hover {
+  color: #111111
+}
+
+.fa-brands {
+  transition: 0.5s;
+}
+
 /* FORMS */
 input {
     margin-top: 20px;
