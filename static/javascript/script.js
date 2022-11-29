@@ -1,8 +1,14 @@
+/**
+ *Load DOM elements first
+ **/
 document.addEventListener("DOMContentLoaded", function () {
   initiateModalImages();
-  removeElementAfterTime(removeSuccessDiv, 3000);
+  executeFunctionAfterTime(removeSuccessDiv, 3000);
 });
 
+/**
+ *Function that creates a modal with properties
+ **/
 function createModal() {
   let modal = new bootstrap.Modal(document.querySelector("#img-modal"), {
     keyboard: false,
@@ -11,6 +17,9 @@ function createModal() {
   modal.show();
 }
 
+/**
+ *Replace modal src attribute with different image src
+ **/
 function imageSrcReplacer(imageCandidate) {
   let imageCandidateSrc = imageCandidate.getAttribute("src");
   let imgModal = document.querySelector("#modal-img");
@@ -18,6 +27,9 @@ function imageSrcReplacer(imageCandidate) {
   createModal();
 }
 
+/**
+ *Add event listeners for modal images
+ **/
 function initiateModalImages() {
   let images = document.querySelectorAll(".gallery-image");
   for (let image of images) {
@@ -27,10 +39,16 @@ function initiateModalImages() {
   }
 }
 
-function removeElementAfterTime(functionToExecute, time) {
+/**
+ *Function that executes function after time
+ **/
+function executeFunctionAfterTime(functionToExecute, time) {
   setTimeout(functionToExecute, time);
 }
 
+/**
+ *Remove SuccessDiv if it exists
+ **/
 function removeSuccessDiv() {
   let targetedDiv = document.getElementById("success_message");
   if (targetedDiv) {

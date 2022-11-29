@@ -1,10 +1,11 @@
 from django.contrib import admin
 
-# Register your models here.
 from .models import Author, Book, ExamplePage, Genre
 
 
 class BookAdmin(admin.ModelAdmin):
+    """View Book in admin panel"""
+
     list_filter = ["authors", "title", "genres"]
     list_display = (
         "title",
