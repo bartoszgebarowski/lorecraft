@@ -66,7 +66,7 @@
             {% if review.user.pk == user.pk %}
                 <div class="container-fluid border-bottom">
                     <div class="row">
-                        <div class="col-4">
+                        <div class="col-4 word-break-all review-data">
                             <div>{{review.user}}</div>
                             <div>{{review.created_at | date:"d.m.y"}}</div>
                             <div>Book rating: {{review.rating}}</div>
@@ -84,7 +84,7 @@
         {% else %}
             <div class="container-fluid border-bottom">
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-4 word-break-all review-data">
                         <div>{{review.user}}</div>
                         <div>{{review.created_at | date:"d.m.y"}}</div>
                         <div>Book rating: {{review.rating}}</div>
