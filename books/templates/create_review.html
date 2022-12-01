@@ -4,8 +4,8 @@
 {% load crispy_forms_tags %}
 {% block content %}
 <div class="d-flex align-items-center flex-column">
-    <h1>Add review to {{book.title}}</h1>
-    <form method="POST" action="{% url 'create_review' book.slug %}">
+    <h1 class="text-center">Add review to {{book.title}}</h1>
+    <form method="POST" action="{% url 'create_review' book.slug %}" class="w-75 me-2">
         {% csrf_token %}
         {{form | crispy}}
         <div class="text-center">

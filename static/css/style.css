@@ -142,6 +142,7 @@ input {
 
 #div_id_rating > div:first-of-type  {
   display: flex;
+  justify-content: center;
   gap: 5px;
 }
 
@@ -172,6 +173,14 @@ input {
     width:  60px;
     height: 40px;
     font-size: 18px;
+  }
+
+  #div_id_rating > div:first-of-type  {
+    font-size: 12px;
+  }
+
+  .review-data {
+    font-size: 12px;
   }
 }
 
