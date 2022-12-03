@@ -1,5 +1,6 @@
 # Lorecraft
 
+![Am i responsive screenshot](docs/readme_images/am-i-responsive.png)
 Lorecraft is a fictional website for fans of books set in the Warcraft universe. The Warcraft phenomenon began with the first single-player strategy game developed by Blizzard Entertainment in 1994. The game has gone through many instalments, reaching its peak in 2004 when World of Warcraft, a Massively multiplayer online role-playing game, hit store shelves and continues to be developed and played to this day. 
 Since the franchise's inception, in the mind of developers and writers, this fantasy world was evolving into something more significant. Chris Metzen's first novel, "Of Blood and Honor", was published in 2001, making it one of few books created before World of Warcraft commercial success. 
 Today the Warcraft universe not only consists of multiple games but comics, novels, audio books and even a film. 
@@ -51,6 +52,8 @@ The Kanban board was created in order to keep track of project progression and t
 The base setup epic is for all stories needed for the base set-up of the application. Without initial steps, the development of the application would not be possible under the given conditions and constraints.
 1. Prototype
 The prototype epic is for all stories needed to create an application prototype. Creating a prototype was an essential step of development, allowing new functionalities to be implemented and tested in a risk-free environment.
+1. Book
+The book epic is for all stories related to books. Books, comics are core content that the user can view and interact with.
 1. Review
 The review epic is for all stories related to creating, editing and deleting a review. This allows users to interact with the application by adding reviews and ratings to publications.
 1. Standalone pages
@@ -72,27 +75,29 @@ This epic is for document-related stories. It provides essential documentation n
 - As a developer, I should add a footer, so a user has quick access to points of interest, located outside of the application 
 - As a developer, I need to create the navbar so that users can navigate the website
 
-**EPIC 3: Review**
+**EPIC 3: Book**
+- As a developer, I need to create an index page where users can access highlighted or featured content
+- As a developer, I need to add pagination to all books so the user can scroll through the content quickly
+- As a developer, I need to prepare a page with all publications, so users can access an item which interests them.
+- As a developer, I need to create a single book page where crucial information about each publication is visible and dynamically rendered to users
+
+**EPIC 4: Review**
 - As a user, I want to add a review and rate a book to share my opinion with others
 - As a user, I want to delete my review if I change my mind and don't want to share my opinion with others
 - As a user, I want to edit my review if I change my opinion on a particular book to ensure that it reflects my thoughts
 
-**EPIC 4: Standalone pages**
+**EPIC 5: Standalone pages**
 - As a developer, I need to implement an authentication system so a user can sign in, sign out and interact with the restricted content
-- As a developer, I need to prepare a page with all publications, so users can access an item which interests them.
-- As a developer, I need to create an index page where users can access highlighted or featured content
-- As a developer, I need to create a single book page where crucial information about each publication is visible and dynamically rendered to users
 - As a developer, I have to add messages so that the users receive feedback after performing successful actions
-- As a developer, I need to add pagination to all books so the user can scroll through the content quickly
 - As a developer, I need to implement 404 page if a user tries to access a page that does not exist
 - As a developer, I need to implement a 403 page if a user tries to access the page without access rights
 - As a developer, I need to implement a 500 error page so users will know when a problem with the server occurred
 
-**EPIC 5: Deployment**
+**EPIC 6: Deployment**
 - As a developer, I have to deploy the project so the users can visit the website and interact with the app
 - As a developer, I need to migrate my database to retain data since Heroku has ended its support for my plan
 
-**EPIC 6: Documentation**
+**EPIC 7: Documentation**
 - As a developer, I need to write README.md so others can check the documentation and gain a better understanding of application principles
 - As a developer, I need to write TESTING.md to test the application thoroughly and to allow other testers to follow the same steps in testing process
 ### The-Scope-Plane
@@ -261,7 +266,7 @@ The hero image was designed in Gimp 2.8.22, with the help of Bevel and Emboss sc
 #### Wireframes
 
 - Homepage 
-![Homepage wireframe](#docs/readme_images/index.png)
+![Homepage wireframe](docs/readme_images/index.png)
 
 - All books page
 ![All books page wireframe](docs/readme_images/all-books.png)
@@ -326,6 +331,8 @@ Database diagram was created by using dbdiagram.io
   - Favicon
 - Balsamiq
   - Wireframes
+- pgAdmin
+ - local database management
 - dbdiagram.io https://dbdiagram.io/home
   - database diagram
 
