@@ -1,12 +1,12 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% load i18n %}
 {% load account socialaccount %}
 {% load crispy_forms_tags %}
-{% block head_title %}{% trans "Sign In" %}{% endblock %}
+{% block title %}Log in{% endblock  %}
 
 {% block content %}
-  <div class="d-flex flex-column align-items-center">
+  <div class="d-flex flex-column align-items-center mx-2">
     <h1>{% trans "Sign In" %}</h1>
     
     {% get_providers as socialaccount_providers %}
@@ -29,8 +29,8 @@
     {% include "socialaccount/snippets/login_extra.html" %}
     
     {% else %}
-    <p>{% blocktrans %}If you have not created an account yet, then please
-    <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+      <p class="text-center">{% blocktrans %}If you have not created an account yet, then please
+      <a class="btn btn-primary" href="{{ signup_url }}">sign up</a> first{% endblocktrans %}</p>
     {% endif %}
     
     <form class="login d-flex flex-column align-items-left" method="POST" action="{% url 'account_login' %}">
@@ -41,6 +41,6 @@
       {% endif %}
       <button class="primaryAction btn btn-primary mt-3" type="submit">{% trans "Sign In" %}</button>
     </form>
-    </div>
+  </div>
 
 {% endblock %}
