@@ -58,4 +58,8 @@ Code passed through JSHint validator with no significant issues.
 
 https://pep8ci.herokuapp.com/ was used. In addition, the test was set up in the Ci.yml for each commit.
 
+### Known bugs 
+1. Registration/login forms are wider than should be when an error is displayed.
+2. If a single review is added to a book and it is waiting for admin approval, the review section is empty.
+
 
