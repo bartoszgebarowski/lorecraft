@@ -2,9 +2,9 @@
 
 ![Am i responsive screenshot](docs/readme_images/am-i-responsive.png)
 Lorecraft is a fictional website for fans of books set in the Warcraft universe. The Warcraft phenomenon began with the first single-player strategy game developed by Blizzard Entertainment in 1994. The game has gone through many instalments, reaching its peak in 2004 when World of Warcraft, a Massively multiplayer online role-playing game, hit store shelves and continues to be developed and played to this day. 
-Since the franchise's inception, in the mind of developers and writers, this fantasy world was evolving into something more significant. Chris Metzen's first novel, "Of Blood and Honor", was published in 2001, making it one of few books created before World of Warcraft commercial success. 
-Today the Warcraft universe not only consists of multiple games but comics, novels, audio books and even a film. 
-Lorecraft application was conceived as a project that creates a safe space to share opinions and popularize lore, present in books and comics that is unknown to many but is set in a universe beloved by millions.
+Since the franchise's inception, in the mind of developers and writers, this fantasy world was evolving into something more significant. Chris Metzen's first novel, "Of Blood and Honor", was published in 2001, making it one of few books created before World of Warcraft's commercial success. 
+Today the Warcraft universe not only consists of multiple games but comics, novels, audiobooks and even a film. 
+The Lorecraft application was conceived as a project that creates a safe space to share opinions and popularize lore that is set in a universe beloved by millions.
 
 
 ## Table of Contents
@@ -44,35 +44,35 @@ Lorecraft application was conceived as a project that creates a safe space to sh
 The project was developed by using agile methodologies. The development cycle was divided into five sprints, where code was delivered in small chunks for flexibility and good coding practice.
 Furthermore, the branch system was employed to work only on branches, merging a code into the main branch and pushing the code into the production branch, simulating a real-life environment.
 
-The Kanban board was created in order to keep track of project progression and task assessment. Tasks were given acceptance criteria. In addition, they were marked with labels and assigned to project epics.
+The Kanban board was created to keep track of project progression and task assessment. Tasks were given acceptance criteria. In addition, they were marked with labels and assigned to project epics.
 
 ###### Epics 
 
 1. Base Setup
-The base setup epic is for all stories needed for the base set-up of the application. Without initial steps, the development of the application would not be possible under the given conditions and constraints.
+The base setup epic is for all stories needed for the base setup of the application. Without initial steps, the development of the application would not be possible under the given conditions and constraints.
 1. Prototype
 The prototype epic is for all stories needed to create an application prototype. Creating a prototype was an essential step of development, allowing new functionalities to be implemented and tested in a risk-free environment.
 1. Book
-The book epic is for all stories related to books. Books, comics are core content that the user can view and interact with.
+The book epic is for all stories related to books. Books and comics are core content that the user can view and interact with.
 1. Review
 The review epic is for all stories related to creating, editing and deleting a review. This allows users to interact with the application by adding reviews and ratings to publications.
 1. Standalone pages
 This epic is for all stories related to small pages and functionalities that don't have their epic. Dependant or tiny features that are not critical but influence the overall experience belongs to this epic.
 1. Deployment
-This epic is for deployment-related stories. Hosting a site on Heroku, allows users to interact with the application in a live environment.
+This epic is for deployment-related stories. Hosting a site on Heroku allows users to interact with the application in a live environment.
 1. Documentation
-This epic is for document-related stories. It provides essential documentation needed to give an insight into the development process and explain all stages of the software production cycle. 
+This epic is for document-related stories. It provides essential documentation to give an insight into the development process and explain all stages of the software production cycle. 
 
 ###### User stories 
 **EPIC 1: Base Setup**
 - As a developer, I have to use linting tools, so my code follows the pep8 standard
-- As a developer, I need to set up the project with the core requirements, so I can work on the project
+- As a developer, I need to set up the project with the core requirements so that I can work on the project
 
 **EPIC 2: Prototype**
 
 - As a developer, I must create a basic structure and style for my content to interact with it and test various ideas.
 - As a developer, I need to set up a local database to be able to work with it and be able to correct potential mistakes before committing changes to a remote database
-- As a developer, I should add a footer, so a user has quick access to points of interest, located outside of the application 
+- As a developer, I should add a footer so a user has quick access to points of interest located outside of the application 
 - As a developer, I need to create the navbar so that users can navigate the website
 
 **EPIC 3: Book**
@@ -89,9 +89,9 @@ This epic is for document-related stories. It provides essential documentation n
 **EPIC 5: Standalone pages**
 - As a developer, I need to implement an authentication system so a user can sign in, sign out and interact with the restricted content
 - As a developer, I have to add messages so that the users receive feedback after performing successful actions
-- As a developer, I need to implement 404 page if a user tries to access a page that does not exist
+- As a developer, I need to implement a 404 page if a user tries to access a page that does not exist
 - As a developer, I need to implement a 403 page if a user tries to access the page without access rights
-- As a developer, I need to implement a 500 error page so users will know when a problem with the server occurred
+- As a developer, I need to implement a 500 error page, so users will know when a problem with the server occurs
 
 **EPIC 6: Deployment**
 - As a developer, I have to deploy the project so the users can visit the website and interact with the app
@@ -99,7 +99,7 @@ This epic is for document-related stories. It provides essential documentation n
 
 **EPIC 7: Documentation**
 - As a developer, I need to write README.md so others can check the documentation and gain a better understanding of application principles
-- As a developer, I need to write TESTING.md to test the application thoroughly and to allow other testers to follow the same steps in testing process
+- As a developer, I need to write TESTING.md to test the application thoroughly and to allow other testers to follow the same steps in the testing process
 ### The-Scope-Plane
 * Responsive design - website should support devices from 320px up
 * Hamburger menu for mobile devices
@@ -121,7 +121,7 @@ Implementation:
 
  * Navigation menu was implemented across all pages 
  * Register and login buttons are visible for users that are not authenticated
- * Hamburger menu is present for greater support for mobile devices
+ * Hamburger menu is present to provide better support for mobile devices
 
 
 ``As a developer, I need to create an index page where users can access highlighted or featured content``
@@ -134,9 +134,9 @@ Implementation:
 
 * Content is sorted by date and by rating 
 * Publication cards contain basic information 
-* If available, the cover is displayed. If not - placeholder image is used 
+* If available, the cover is displayed. If not - a placeholder image is used 
 
-``As a developer, I should add a footer, so a user has quick access to points of interest, located outside of the application``
+``As a developer, I should add a footer so a user can easily access points of interest outside the application``
 
 Implementation:
 
@@ -166,13 +166,13 @@ Implementation:
 
 ![Single book page](docs/readme_images/single-no-review.png)
 
-* full information about each publication is present 
+* complete information about each publication is present 
 * ratings and reviews, if available, are displayed
 * modal was used to present example pages for each book (if available)
-* add review button is visible only if a user do not add review for a book
+* add review button is visible only if a user does not add a review for a book
 
 ![Review waiting for admin approval](docs/readme_images/review-visibility.png)
-* reviews waiting for approval are only visible for users that created them
+* reviews waiting for approval are only visible to users that created them
 
 ``As a user, I want to add a review and rate a book to share my opinion with others``
 
@@ -182,7 +182,7 @@ Implementation:
 
 ![Add review form](docs/readme_images/add-review-form.png)
 
-* only single review is allowed per book for each user 
+* only a single review is allowed per book for each user 
 * rating options are presented in the form of radio buttons 
 * review is visible to all other users only after admin approval 
 
@@ -194,7 +194,7 @@ Implementation:
 
 ![Edit review form](docs/readme_images/edit-review-form.png)
 
-* user can edit a review as man time as he wants 
+* user can edit a review as many times as he wants 
 * each edit turns the review status for waiting for approval 
 
 ``As a user, I want to delete my review if I change my mind and don't want to share my opinion with others``
@@ -203,7 +203,7 @@ Implementation:
 
 ![Delete review](docs/readme_images/delete-review-confirmation.png)
 
-* review and book context is presented for a user
+* Review and book context is presented for a user
 * user is asked for delete confirmation
 
 ``As a developer, I have to add messages so that the users receive feedback after performing successful actions``
@@ -214,11 +214,11 @@ Implementation:
 
 ![Messages](docs/readme_images/messages.png)
 
-* contextual messages are displayed in response for users actions
-* they disappear after certain period of time
+* contextual messages are displayed in response to users actions
+* they disappear after a certain period of time
 
 
-``As a developer, I need to implement 404 page if a user tries to access a page that does not exist``
+``As a developer, I need to implement a 404 page if a user tries to access a page that does not exist``
 
 Implementation:
 
@@ -227,21 +227,21 @@ Implementation:
 ``As a developer, I need to implement a 403 page if a user tries to access the page without access rights``
 
 * Error explanation
-* Button that allows to return to the homepage
+* Button that allows returning to the homepage
 
 Implementation: 
 
 **Error 403 page**
 
-``As a developer, I need to implement a 500 error page so users will know when a problem with the server occurred``
+``As a developer, I need to implement a 500 error page, so users will know when a problem with the server occurs``
 
 * Error explanation
-* Button that allows to return to the homepage
+* Button that allows returning to the homepage
 
 **Error 500 page** 
 
 * Error explanation
-* Button that allows to return to the homepage
+* Button that allows returning to the homepage
 
 #### Features Left To Implement
 * About us page to allow users to contact staff members or administration. Furthermore, marketing information could also be added, as it is a fitting place for such content.
@@ -299,9 +299,9 @@ The book model holds crucial information about each publication, like authors or
 
 The review model is connected with a user by many to one relationship, allowing a single review per book.
 
-Example pages use many to one relationship model, allowing multiple images to be assigned for a single publication.
+Example pages use many to one-relationship model, allowing multiple images to be assigned for a single publication.
 
-Each model has datetimefield to store information about the creation of particular content or potential update.
+Each model has a DateTime field to store information about the creation of particular content or potential update.
 
 Database diagram was created by using dbdiagram.io 
 ![Database diagram screenshot](docs/readme_images/db-schema.png)
