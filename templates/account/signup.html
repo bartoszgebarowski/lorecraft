@@ -3,14 +3,13 @@
 
 {% load i18n %}
 {% load crispy_forms_tags %}
-{% block head_title %}{% trans "Signup" %}{% endblock %}
+{% block title %} Registration {% endblock  %}
 
 {% block content %}
-<main>
-  <div class="d-flex flex-column align-items-center">
+  <div class="d-flex flex-column align-items-center mx-2">
     <h1>{% trans "Register" %}</h1>
     
-    <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+    <p class="text-center">{% blocktrans %}Already have an account? Then please <a class="btn btn-primary" href="{{ login_url }}">sign in</a>{% endblocktrans %}</p>
     
     <form class="signup d-flex flex-column align-items-left" id="signup_form" method="post" action="{% url 'account_signup' %}">
       {% csrf_token %}
@@ -20,7 +19,6 @@
       {% endif %}
       <button class="btn btn-primary mt-3" type="submit">{% trans "Sign Up" %}</button>
     </form>
-    </div>
-</main>
+  </div>
 
 {% endblock %}

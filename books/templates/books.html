@@ -2,6 +2,7 @@
 {% block title %}All books{% endblock  %}
 {% load static %}
 {% block content %}
+<!--Book section-->
   <section class="container">
     <h1 class="text-center">All books</h1>
     <div class="container">
@@ -34,6 +35,7 @@
     </div>
   </section>
 {% endblock %}
+<!-- Pagination bar -->
 {% block pagination%}
 <div id="paginatior-container" class="d-flex justify-content-center mb-2 gap-5px ">
       {% if page_obj.has_previous %}

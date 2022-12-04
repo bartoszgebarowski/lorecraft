@@ -2,6 +2,7 @@
 {% block title %}{{book.title}} single page {% endblock  %}
 {% load static %}
 {% block content %}
+    <!--Book information section -->
     <section class="border-bottom">
         <h1 class="mb-0 text-center section-header">{{book.title}}</h1>
         <div class="mx-3">
@@ -21,6 +22,7 @@
                         </div>
                     {% endfor %}
             </div>
+            <!--Rating -->
             <div class="overall-rating mt-2 font-size-32px">
                 Overall rating:
                 {% if rating %}
@@ -30,6 +32,7 @@
                 {% endif %} 
             </div>       
         </div>
+        <!--Gallery images -->
         <div class="single-book-flex-container gap-5px mt-2 mb-2 mx-3">
             <div class="example-image-container">
                 <img class="gallery-image" src="{{book.title_image.url}}"
@@ -39,7 +42,6 @@
                     alt="{{book.title}}'s cover"
                 {% endif %}
                 >
-                </a>
             </div>
             {% for book_image in book.example_pages.all%}
                 <div class="example-image-container">
@@ -47,18 +49,21 @@
                 </div>
             {% endfor %}
         </div>
+        <!--Add review button-->
         {% if is_review_eligible %}
             <div class="flex-add-review-container mt-2 mb-2 mx-3">
-                <a href="{% url 'create_review' book.slug %}" class="btn btn-primary btn-sm active btn-success" role="button" aria-label="Add review to {{book.title}}"aria-pressed="true">Add review</a>
+                <a href="{% url 'create_review' book.slug %}" class="btn btn-primary btn-sm active btn-success" role="button" aria-label="Add review to {{book.title}}" aria-pressed="true">Add review</a>
             </div>
         {% endif %}
     </section>
+    <!--Book description -->
     <section>
         <h2 class="text-center section-header">Book description</h2>
         <div class="mx-3">
             {{book.description}}
         </div>
     </section>
+    <!--Reviews section -->
     <section class='bg-light'>
         <h3 class="text-center mb-0 border-bottom section-header">Reviews:</h3>
         {% for review in book.reviews.all %}
@@ -120,7 +125,7 @@
             </div>
             <div class="modal-body">
                 <div class="text-center">
-                    <img id="modal-img" src="" alt="{{book.title}} example page">
+                    <img id="modal-img" src="{{book.title_image.url}}" alt="{{book.title}} example page">
                 </div>
             </div>
         </div>
